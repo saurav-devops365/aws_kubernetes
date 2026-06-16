@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scalex-frontend-deployment
+  namespace: growdeck
+  labels:
+    app: scalex-frontend
+spec:
+  replicas: 2 # HPA will handle scaling
+  selector:
+    matchLabels:
+      app: scalex-frontend
+  template:
+    metadata:
+      labels:
+        app: scalex-frontend
+    spec:
+      containers:
+      - name: scalex-frontend
+        image: 
+        ports:
+        - containerPort: 
+        resources:
+          requests:
+            cpu: "250m" # Minimum guaranteed CPU
+            memory: "512Mi" # Minimum guaranteed RAM
+          limits:
+            cpu: "1000m" # Max CPU per pod
+            memory: "2Gi" # Max RAM per pod
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scalex-frontend-service
+  namespace: growdeck
+spec:
+  selector:
+    app: scalex-frontend
+  ports:
+  - port: 
+    targetPort: 
+    protocol: TCP
+  type: ClusterIP
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: scalex-frontend-hpa
+  namespace: growdeck
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: scalex-frontend-deployment
+  minReplicas: 2
+  maxReplicas: 20
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 30 # Reduce delay in scaling up
+      policies:
+      - type: Percent
+        value: 50
+        periodSeconds: 15 # Allow 50% increase every 15s
+    scaleDown:
+      stabilizationWindowSeconds: 80 # Prevent rapid scale down
+      policies:
+      - type: Percent
+        value: 20
+        periodSeconds: 30 # Allow 20% decrease every 30s

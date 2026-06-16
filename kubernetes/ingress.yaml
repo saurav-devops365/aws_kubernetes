@@ -25,3 +25,83 @@ spec:
             name: #add your service name
             port:
               number: #port number
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: #add your service name
+            port:
+              number: #port number
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: #add your service name
+            port:
+              number: #port number
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: #add your service name
+            port:
+              number: #port number
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: #add your service name
+            port:
+              number: #port number        
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: #add your service name
+            port:
+              number: #port number
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: #add your service name
+            port:
+              number: #port number
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: #add your service name
+            port:
+              number: #port number 
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: #add your service name
+            port:
+              number: #port number                                                                                         
