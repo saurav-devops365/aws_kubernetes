@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: analytics_backend
-        image: growdeck/backend_offerwall-backend-prod:v0.1
+        image: affiefly/offerwall_backend-prod:v0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
