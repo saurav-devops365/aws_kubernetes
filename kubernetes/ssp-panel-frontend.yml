@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: ssp-panel-frontend
-        image: 
+        image: affiefly/ssp-panel-frontend-prod:v0.0
         ports:
         - containerPort: 
         resources:
