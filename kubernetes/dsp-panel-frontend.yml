@@ -19,7 +19,7 @@ spec:
       - name: dsp-panel-frontend
         image: affiefly/dsp-panel-frontend-prod:v0.1
         ports:
-        - containerPort: 
+        - containerPort: 3000
         resources:
           requests:
             cpu: "250m" # Minimum guaranteed CPU
@@ -37,8 +37,8 @@ spec:
   selector:
     app: dsp-panel-frontend
   ports:
-  - port: 
-    targetPort: 
+  - port: 3000
+    targetPort: 3000
     protocol: TCP
   type: ClusterIP
 
