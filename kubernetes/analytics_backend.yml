@@ -20,6 +20,9 @@ spec:
       - name: analytics-backend
         image: affiefly/offerwall-backend-prod:v0.1
         imagePullPolicy: Always
+        envFrom:
+          - secretRef:
+              name: backend-analytics-secret
         ports:
         - containerPort: 5000
         resources:
