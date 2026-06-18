@@ -19,7 +19,7 @@ spec:
       - name: emp-panel-frontend
         image: affiefly/emp-panel-frontend-prod:v0.2
         ports:
-        - containerPort: 
+        - containerPort: 80
         resources:
           requests:
             cpu: "250m" # Minimum guaranteed CPU
@@ -37,8 +37,8 @@ spec:
   selector:
     app: emp-panel-frontend
   ports:
-  - port: 
-    targetPort: 
+  - port: 80
+    targetPort: 80
     protocol: TCP
   type: ClusterIP
 
