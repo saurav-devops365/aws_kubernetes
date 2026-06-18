@@ -2,23 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: analytics_backend-deployment
+  name: analytics-backend-deployment
   namespace: growdeck
   labels:
-    app: analytics_backend
+    app: analytics-backend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: analytics_backend
+      app: analytics-backend
   template:
     metadata:
       labels:
-        app: analytics_backend
+        app: analytics-backend
     spec:
       containers:
-      - name: analytics_backend
-        image: affiefly/offerwall_backend-prod:v0.1
+      - name: analytics-backend
+        image: affiefly/offerwall-backend-prod:v0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
@@ -52,13 +52,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: analytics_backend-service
+  name: analytics-backend-service
   namespace: growdeck
   labels:
-    app: analytics_backend
+    app: analytics-backend
 spec:
   selector:
-    app: analytics_backend
+    app: analytics-backend
   ports:
   - port: 5000
     targetPort: 5000
@@ -69,13 +69,13 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: analytics_backend-hpa
+  name: analytics-backend-hpa
   namespace: growdeck
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: analytics_backend-deployment
+    name: analytics-backend-deployment
   minReplicas: 2
   maxReplicas: 5
   metrics:
