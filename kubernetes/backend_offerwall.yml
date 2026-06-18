@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: backend-offerwall
-          image: affiefly/offerwall-backend-prod:v0.2
+          image: affiefly/offerwall-backend-prod:v0.3
           imagePullPolicy: Always
 
           envFrom:
