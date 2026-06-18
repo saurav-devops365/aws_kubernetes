@@ -1,107 +1,107 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: growdeck-ingress
-  namespace: growdeck
-  annotations:
-    alb.ingress.kubernetes.io/group.name: production
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:223436695596:certificate/33708e08-8eaf-42d8-a876-e22ea80edc49
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
-    alb.ingress.kubernetes.io/ssl-redirect: "443"
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: growdeck-ingress
+#   namespace: growdeck
+#   annotations:
+#     alb.ingress.kubernetes.io/group.name: production
+#     alb.ingress.kubernetes.io/scheme: internet-facing
+#     alb.ingress.kubernetes.io/target-type: ip
+#     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:223436695596:certificate/33708e08-8eaf-42d8-a876-e22ea80edc49
+#     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+#     alb.ingress.kubernetes.io/ssl-redirect: "443"
 
-spec:
-  ingressClassName: alb
+# spec:
+#   ingressClassName: alb
 
-  rules:
-  - host: example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: #add your service name
-            port:
-              number: #port number
-  - host: example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: #add your service name
-            port:
-              number: #port number
-  - host: example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: #add your service name
-            port:
-              number: #port number
-  - host: example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: #add your service name
-            port:
-              number: #port number
-  - host: example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: #add your service name
-            port:
-              number: #port number        
-  - host: example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: #add your service name
-            port:
-              number: #port number
-  - host: example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: #add your service name
-            port:
-              number: #port number
-  - host: example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: #add your service name
-            port:
-              number: #port number 
-  - host: example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: #add your service name
-            port:
-              number: #port number                                                                                         
+#   rules:
+#   - host: example.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: #add your service name
+#             port:
+#               number: #port number
+#   - host: example.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: #add your service name
+#             port:
+#               number: #port number
+#   - host: example.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: #add your service name
+#             port:
+#               number: #port number
+#   - host: example.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: #add your service name
+#             port:
+#               number: #port number
+#   - host: example.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: #add your service name
+#             port:
+#               number: #port number        
+#   - host: example.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: #add your service name
+#             port:
+#               number: #port number
+#   - host: example.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: #add your service name
+#             port:
+#               number: #port number
+#   - host: example.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: #add your service name
+#             port:
+#               number: #port number 
+#   - host: example.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: #add your service name
+#             port:
+#               number: #port number                                                                                         
