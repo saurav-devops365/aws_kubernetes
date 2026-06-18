@@ -22,11 +22,11 @@ spec:
         - containerPort: 80
         resources:
           requests:
-            cpu: "250m" # Minimum guaranteed CPU
-            memory: "512Mi" # Minimum guaranteed RAM
+            cpu: "100m" # Minimum guaranteed CPU
+            memory: "128Mi" # Minimum guaranteed RAM
           limits:
-            cpu: "1000m" # Max CPU per pod
-            memory: "2Gi" # Max RAM per pod
+            cpu: "500m" # Max CPU per pod
+            memory: "512Mi" # Max RAM per pod
 ---
 apiVersion: v1
 kind: Service

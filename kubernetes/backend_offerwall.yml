@@ -24,11 +24,11 @@ spec:
         - containerPort: 5000
         resources:
           requests:
-            memory: "2Gi"
-            cpu: "1000m"
+            memory: "256Mi"
+            cpu: "250m"
           limits:
-            memory: "6Gi"
-            cpu: "3000m"
+            memory: "1Gi"
+            cpu: "1000m"
 
         livenessProbe:
           httpGet:
