@@ -55,7 +55,7 @@ spec:
             name: emp-panel-frontend-service
             port:
               number: 80
-  - host: growdeck.growdeck.space
+  - host: growdeck.space
     http:
       paths:
       - path: /
@@ -75,7 +75,7 @@ spec:
             name: playweb-frontend-service
             port:
               number: 80
-  - host: growdeck.growdeck.space
+  - host: growdeck.space
     http:
       paths:
       - path: /campaigns/scalex/
