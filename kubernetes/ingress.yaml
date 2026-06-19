@@ -64,7 +64,7 @@ spec:
           service:
             name: growdeck-frontend-service
             port:
-              number: 80    
+              number: 3000    
   - host: playweb.growdeck.space
     http:
       paths:
