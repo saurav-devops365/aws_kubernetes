@@ -58,13 +58,20 @@ spec:
   - host: growdeck.space
     http:
       paths:
+      - path: /campaigns/scalex
+        pathType: Prefix
+        backend:
+          service:
+            name: scalex-frontend-service
+            port:
+              number: 80
       - path: /
         pathType: Prefix
         backend:
           service:
             name: growdeck-frontend-service
             port:
-              number: 3000    
+              number: 3000
   - host: playweb.growdeck.space
     http:
       paths:
@@ -73,16 +80,6 @@ spec:
         backend:
           service:
             name: playweb-frontend-service
-            port:
-              number: 80
-  - host: 
-    http:
-      paths:
-      - path: /campaigns/scalex/
-        pathType: Prefix
-        backend:
-          service:
-            name: scalex-frontend-service
             port:
               number: 80
   - host: ssp.growdeck.space
