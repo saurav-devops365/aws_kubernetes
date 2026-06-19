@@ -1,9 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: growdeck-ingress
+  name: growdeck-api-ingress
   namespace: growdeck
   annotations:
+    external-dns: enabled
+
     alb.ingress.kubernetes.io/group.name: production
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
@@ -15,90 +17,119 @@ spec:
   ingressClassName: alb
 
   rules:
-  - host: api.growdeck.space
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 5000
-  - host: analytics-backend.growdeck.space
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: analytics-backend-service
-            port:
-              number: 5000
-  - host: dsp.growdeck.space
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: dsp-panel-frontend-service
-            port:
-              number: 80
-  - host: emp.growdeck.space
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: emp-panel-frontend-service
-            port:
-              number: 80
-  - host: growdeck.space
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service: 
-            name: growdeck-frontend-service
-            port:
-              number: 3000
-      - path: /campaigns/scalex
-        pathType: Prefix
-        backend:
-          service:
-            name: scalex-frontend-service
-            port:
-              number: 3000
-  - host: playweb.growdeck.space
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: playweb-frontend-service
-            port:
-              number: 80
-  - host: ssp.growdeck.space
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: ssp-panel-frontend-service
-            port:
-              number: 80
-  - host: webwall.growdeck.space
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: webwall-frontend-service
-            port:
-              number: 3000                                                                                 
+    - host: api.growdeck.space
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 5000
+
+    - host: analytics-backend.growdeck.space
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: analytics-backend-service
+                port:
+                  number: 5000
+
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: growdeck-frontend-ingress
+  namespace: growdeck
+  annotations:
+    external-dns: disabled
+
+    alb.ingress.kubernetes.io/group.name: production
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:223436695596:certificate/55bd73ee-2b80-4db3-8981-085f493c3d6d
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+
+spec:
+  ingressClassName: alb
+
+  rules:
+    - host: growdeck.space
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: growdeck-frontend-service
+                port:
+                  number: 3000
+
+          - path: /campaigns/scalex
+            pathType: Prefix
+            backend:
+              service:
+                name: scalex-frontend-service
+                port:
+                  number: 3000
+
+    - host: dsp.growdeck.space
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dsp-panel-frontend-service
+                port:
+                  number: 80
+
+    - host: emp.growdeck.space
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: emp-panel-frontend-service
+                port:
+                  number: 80
+
+    - host: playweb.growdeck.space
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: playweb-frontend-service
+                port:
+                  number: 80
+
+    - host: ssp.growdeck.space
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ssp-panel-frontend-service
+                port:
+                  number: 80
+
+    - host: webwall.growdeck.space
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webwall-frontend-service
+                port:
+                  number: 3000
