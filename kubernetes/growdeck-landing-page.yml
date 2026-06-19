@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: growdeck-frontend
-        image: affiefly/growdeck-landing-frontend-prod:v0.2
+        image: affiefly/growdeck-landing-frontend-prod:v0.3
         ports:
         - containerPort: 80
         resources:
