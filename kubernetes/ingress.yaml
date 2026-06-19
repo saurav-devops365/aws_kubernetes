@@ -75,7 +75,7 @@ spec:
             name: playweb-frontend-service
             port:
               number: 80
-  - host: growdeck.space
+  - host: 
     http:
       paths:
       - path: /campaigns/scalex/
