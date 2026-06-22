@@ -82,7 +82,7 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: backend-offerwall-hpa
+  name: backend-hpa
   namespace: growdeck
 spec:
   scaleTargetRef:
