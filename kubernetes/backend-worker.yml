@@ -1,26 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-offerwall-deployment
+  name: worker-deployment
   namespace: growdeck
 spec:
-  replicas: 5
+  replicas: 1
 
   selector:
     matchLabels:
-      app: backend-offerwall
+      app: backend-worker
 
   template:
     metadata:
       labels:
-        app: backend-offerwall
+        app: backend-worker
 
     spec:
       containers:
-        - name: backend-offerwall
+        - name: backend-worker
           image: affiefly/offerwall-backend-prod:v0.19
           imagePullPolicy: Always
-
+          command: ["node"]
+          args: ["bullMQ.js"]
           envFrom:
             - secretRef:
                 name: backend-offerwall-secret
@@ -64,13 +65,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-service
+  name: worker-service
   namespace: growdeck
   labels:
-    app: backend-offerwall
+    app: backend-worker
 spec:
   selector:
-    app: backend-offerwall
+    app: backend-worker
   ports:
   - port: 5000
     targetPort: 5000
@@ -87,9 +88,9 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: backend-offerwall-deployment
-  minReplicas: 5
-  maxReplicas: 30
+    name: backend-worker
+  minReplicas: 1
+  maxReplicas: 10
   metrics:
   - type: Resource
     resource:
