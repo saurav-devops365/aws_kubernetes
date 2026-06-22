@@ -65,7 +65,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-service
+  name: backend-offerwall-service
   namespace: growdeck
   labels:
     app: backend-offerwall
