@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: scalex-frontend
-        image: affiefly/scalex-landing-frontend-prod:v0.2
+        image: affiefly/scalex-landing-frontend-prod:v0.3
         ports:
         - containerPort: 3000
         resources:
