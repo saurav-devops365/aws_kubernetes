@@ -28,6 +28,17 @@ spec:
                 port:
                   number: 5000
 
+    - host: offerwall-api.growdeck.space
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-offerwall-service
+                port:
+                  number: 5000              
+
     - host: analytics-backend.growdeck.space
       http:
         paths:
