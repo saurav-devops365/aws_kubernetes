@@ -49,6 +49,16 @@ spec:
                 name: analytics-backend-service
                 port:
                   number: 5000
+    - host: geo-core-api.growdeck.space
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: geo-core-api-backend-service
+                port:
+                  number: 5000              
     - host: growdeck.space
       http:
         paths:
