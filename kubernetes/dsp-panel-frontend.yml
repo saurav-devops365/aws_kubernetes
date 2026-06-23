@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: dsp-panel-frontend
-        image: affiefly/dsp-panel-frontend-prod:v0.6
+        image: affiefly/dsp-panel-frontend-prod:v0.7
         ports:
         - containerPort: 80
         resources:
