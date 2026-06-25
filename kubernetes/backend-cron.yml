@@ -11,7 +11,7 @@
 #         spec:
 #           containers:
 #           - name: backend-cron
-#             image: affiefly/offerwall-backend-prod:v0.36
+#             image: affiefly/offerwall-backend-prod:v0.37
 #             command: ["node"]
 #             args: ["nodeCron.js"]
 #           restartPolicy: OnFailure
