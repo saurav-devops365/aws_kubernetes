@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: affiefly/offerwall-backend-prod:v0.26
+          image: affiefly/offerwall-backend-prod:v0.27
           imagePullPolicy: Always
           command: ["node"]
           args: ["app.js"]
