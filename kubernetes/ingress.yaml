@@ -122,7 +122,7 @@ spec:
                 port:
                   number: 3000
 
-    - host: webwall.growdeck.space
+    - host: websdk.growdeck.io
       http:
         paths:
           - path: /
