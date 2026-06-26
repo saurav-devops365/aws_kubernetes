@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: emp-panel-frontend
-        image: affiefly/emp-panel-frontend-prod:v0.3
+        image: affiefly/emp-panel-frontend-prod:v0.4
         ports:
         - containerPort: 3000
         resources:
