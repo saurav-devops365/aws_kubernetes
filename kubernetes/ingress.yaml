@@ -78,7 +78,7 @@ spec:
                 port:
                   number: 3000
 
-    - host: publisher.growdeck.io
+    - host:  scalex.growdeck.io
       http:
         paths:
           - path: /
@@ -111,7 +111,7 @@ spec:
                 port:
                   number: 80
 
-    - host: scalex.growdeck.io
+    - host: publisher.growdeck.io
       http:
         paths:
           - path: /
