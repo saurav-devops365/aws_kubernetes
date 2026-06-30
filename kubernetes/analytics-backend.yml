@@ -1,99 +1,121 @@
-# ---
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: analytics-backend-deployment
-#   namespace: growdeck
-#   labels:
-#     app: analytics-backend
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: analytics-backend
-#   template:
-#     metadata:
-#       labels:
-#         app: analytics-backend
-#     spec:
-#       containers:
-#       - name: analytics-backend
-#         image: affiefly/analytics-backend-prod:v0.8
-#         imagePullPolicy: Always
-#         envFrom:
-#           - secretRef:
-#               name: backend-analytics-secret
-#         ports:
-#         - containerPort: 5000
-#         resources:
-#           requests:
-#             memory: "2Gi"
-#             cpu: "1000m"
-#           limits:
-#             memory: "4Gi"
-#             cpu: "3000m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analytics-backend-deployment
+  namespace: growdeck
+  labels:
+    app: analytics-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: analytics-backend
+  template:
+    metadata:
+      labels:
+        app: analytics-backend
+    spec:
+      containers:
+      - name: analytics-backend
+        image: affiefly/analytics-backend-prod:v0.8
+        imagePullPolicy: Always
+        envFrom:
+          - secretRef:
+              name: backend-analytics-secret
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+          limits:
+            memory: "4Gi"
+            cpu: "3000m"
 
-#         # livenessProbe:
-#         #   httpGet:
-#         #     path: /health
-#         #     port: 5000
-#         #   initialDelaySeconds: 15
-#         #   periodSeconds: 15
-#         #   timeoutSeconds: 3
-#         #   failureThreshold: 5
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analytics-backend-cron-deployment
+  namespace: growdeck
+  labels:
+    app: analytics-backend-cron
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: analytics-backend-cron
+  template:
+    metadata:
+      labels:
+        app: analytics-backend-cron
+    spec:
+      containers:
+      - name: analytics-backend-corn
+        image: affiefly/analytics-backend-prod:v0.8
+        imagePullPolicy: Always
+        command: ["node"]
+        args: ["cronJob.js"]
+        envFrom:
+          - secretRef:
+              name: backend-analytics-secret
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "1000m"
+          limits:
+            memory: "2Gi"
+            cpu: "3000m"
 
-#         # readinessProbe:
-#         #   httpGet:
-#         #     path: /health
-#         #     port: 5000
-#         #   initialDelaySeconds: 20
-#         #   periodSeconds: 10
-#         #   timeoutSeconds: 3
-#         #   failureThreshold: 5
 
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: analytics-backend-service
-#   namespace: growdeck
-#   labels:
-#     app: analytics-backend
-# spec:
-#   selector:
-#     app: analytics-backend
-#   ports:
-#   - port: 5000
-#     targetPort: 5000
-#     protocol: TCP
-#   type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: analytics-backend-service
+  namespace: growdeck
+  labels:
+    app: analytics-backend
+spec:
+  selector:
+    app: analytics-backend
+  ports:
+  - port: 5000
+    targetPort: 5000
+    protocol: TCP
+  type: ClusterIP
 
-# ---
-# apiVersion: autoscaling/v2
-# kind: HorizontalPodAutoscaler
-# metadata:
-#   name: analytics-backend-hpa
-#   namespace: growdeck
-# spec:
-#   scaleTargetRef:
-#     apiVersion: apps/v1
-#     kind: Deployment
-#     name: analytics-backend-deployment
-#   minReplicas: 1
-#   maxReplicas: 5
-#   metrics:
-#   - type: Resource
-#     resource:
-#       name: cpu
-#       target:
-#         type: Utilization
-#         averageUtilization: 80 # Scale up if CPU usage exceeds 75%
-#   - type: Resource
-#     resource:
-#       name: memory
-#       target:
-#         type: Utilization
-#         averageUtilization: 80
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: analytics-backend-hpa
+  namespace: growdeck
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: analytics-backend-deployment
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 80 # Scale up if CPU usage exceeds 75%
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+
+
 
 
 
