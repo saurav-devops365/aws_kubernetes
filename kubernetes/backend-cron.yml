@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
       - name: analytics-backend-corn
-        image: affiefly/analytics-backend-prod:v0.9
+        image: affiefly/analytics-backend-prod:v0.10
         imagePullPolicy: Always
         command: ["node"]
         args: ["cronJob.js"]
@@ -74,7 +74,7 @@ spec:
     spec:
       containers:
       - name: analytics-backend-worker
-        image: affiefly/analytics-backend-prod:v0.9
+        image: affiefly/analytics-backend-prod:v0.10
         imagePullPolicy: Always
         command: ["node"]
         args: ["bullMQ.js"]
