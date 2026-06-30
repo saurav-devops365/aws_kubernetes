@@ -7,7 +7,7 @@ metadata:
   labels:
     app: analytics-backend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: analytics-backend
@@ -30,7 +30,7 @@ spec:
             memory: "2Gi"
             cpu: "1000m"
           limits:
-            memory: "6Gi"
+            memory: "4Gi"
             cpu: "3000m"
 
         # livenessProbe:
