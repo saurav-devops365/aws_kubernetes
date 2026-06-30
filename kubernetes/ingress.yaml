@@ -1,135 +1,135 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: growdeck-api-ingress
-  namespace: growdeck
-  annotations:
-    external-dns: enabled
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: growdeck-api-ingress
+#   namespace: growdeck
+#   annotations:
+#     external-dns: enabled
 
-    alb.ingress.kubernetes.io/group.name: production
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:223436695596:certificate/55bd73ee-2b80-4db3-8981-085f493c3d6d
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
-    alb.ingress.kubernetes.io/ssl-redirect: "443"
+#     alb.ingress.kubernetes.io/group.name: production
+#     alb.ingress.kubernetes.io/scheme: internet-facing
+#     alb.ingress.kubernetes.io/target-type: ip
+#     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:223436695596:certificate/55bd73ee-2b80-4db3-8981-085f493c3d6d
+#     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+#     alb.ingress.kubernetes.io/ssl-redirect: "443"
 
-spec:
-  ingressClassName: alb
+# spec:
+#   ingressClassName: alb
 
-  rules:
-    - host: api.growdeck.io
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: backend-service
-                port:
-                  number: 5000
+#   rules:
+#     - host: api.growdeck.io
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: backend-service
+#                 port:
+#                   number: 5000
 
-    - host: wall-api.growdeck.io
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: backend-offerwall-service
-                port:
-                  number: 5000              
+#     - host: wall-api.growdeck.io
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: backend-offerwall-service
+#                 port:
+#                   number: 5000              
 
-    - host: analytics.growdeck.io
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: analytics-backend-service
-                port:
-                  number: 5000
-    - host: geo-core-api.growdeck.io
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: geo-core-api-backend-service
-                port:
-                  number: 5000              
-    - host: growdeck.io
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: growdeck-frontend-service
-                port:
-                  number: 3000
+#     - host: analytics.growdeck.io
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: analytics-backend-service
+#                 port:
+#                   number: 5000
+#     - host: geo-core-api.growdeck.io
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: geo-core-api-backend-service
+#                 port:
+#                   number: 5000              
+#     - host: growdeck.io
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: growdeck-frontend-service
+#                 port:
+#                   number: 3000
 
-          - path: /campaigns/scalex
-            pathType: Prefix
-            backend:
-              service:
-                name: scalex-frontend-service
-                port:
-                  number: 3000
+#           - path: /campaigns/scalex
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: scalex-frontend-service
+#                 port:
+#                   number: 3000
 
-    - host:  scalex.growdeck.io
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: dsp-panel-frontend-service
-                port:
-                  number: 3000
+#     - host:  scalex.growdeck.io
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: dsp-panel-frontend-service
+#                 port:
+#                   number: 3000
 
-    - host: employee-id.growdeck.io
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: emp-panel-frontend-service
-                port:
-                  number: 3000
+#     - host: employee-id.growdeck.io
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: emp-panel-frontend-service
+#                 port:
+#                   number: 3000
 
-    - host: playweb.growdeck.io
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: playweb-frontend-service
-                port:
-                  number: 80
+#     - host: playweb.growdeck.io
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: playweb-frontend-service
+#                 port:
+#                   number: 80
 
-    - host: publisher.growdeck.io
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: ssp-panel-frontend-service
-                port:
-                  number: 3000
+#     - host: publisher.growdeck.io
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: ssp-panel-frontend-service
+#                 port:
+#                   number: 3000
 
-    - host: websdk.growdeck.io
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: webwall-frontend-service
-                port:
-                  number: 3000
+#     - host: websdk.growdeck.io
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: webwall-frontend-service
+#                 port:
+#                   number: 3000
 
