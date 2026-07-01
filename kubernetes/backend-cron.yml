@@ -1,3 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: corn-backend-deployment
+  namespace: growdeck
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: backend-corn
+
+  template:
+    metadata:
+      labels:
+        app: backend-corn
+
+    spec:
+      containers:
+        - name: backend-corn
+          image: affiefly/offerwall-backend-prod:v0.53
+          imagePullPolicy: Always
+          command: ["node"]
+          args: ["nodeCron.js"]
+          envFrom:
+            - secretRef:
+                name: backend-offerwall-secret
+
+          env:
+            - name: REDIS_HOST
+              value: "redis-service"
+            - name: REDIS_PORT
+              value: "6379"
+
+          ports:
+            - containerPort: 5001
+
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
 # apiVersion: batch/v1
 # kind: CronJob
 # metadata:
