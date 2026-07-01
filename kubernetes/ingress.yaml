@@ -28,7 +28,7 @@ spec:
                 port:
                   number: 5000
 
-    - host: wall-api.growdeck.io
+    - host: wall-api.growdeck.space
       http:
         paths:
           - path: /
