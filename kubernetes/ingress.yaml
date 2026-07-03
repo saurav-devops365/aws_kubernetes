@@ -108,18 +108,7 @@ spec:
                 name: playweb-frontend-service
                 port:
                   number: 3000  
-
-    - host: test-playweb.growdeck.io
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: playweb-frontend-service
-                port:
-                  number: 3000                          
-
+                       
     - host: publisher.growdeck.io
       http:
         paths:
