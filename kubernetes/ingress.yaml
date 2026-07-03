@@ -109,17 +109,6 @@ spec:
               service:
                 name: playweb-frontend-service
                 port:
-                  number: 80
-
-    - host: test-playweb.growdeck.io 
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: playweb-frontend-service
-                port:
                   number: 80              
 
     - host: publisher.growdeck.io
