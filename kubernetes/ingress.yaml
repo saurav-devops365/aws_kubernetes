@@ -27,7 +27,6 @@ spec:
                 name: backend-service
                 port:
                   number: 5000
-
     - host: wall-api.growdeck.io
       http:
         paths:
@@ -38,7 +37,6 @@ spec:
                 name: backend-offerwall-service
                 port:
                   number: 5000              
-
     - host: analytics.growdeck.io
       http:
         paths:
@@ -109,7 +107,7 @@ spec:
               service:
                 name: playweb-frontend-service
                 port:
-                  number: 80              
+                  number: 3000              
 
     - host: publisher.growdeck.io
       http:
