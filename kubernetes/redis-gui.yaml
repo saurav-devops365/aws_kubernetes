@@ -1,51 +1,51 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: redis-insight
-  namespace: growdeck
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: redis-insight
-  template:
-    metadata:
-      labels:
-        app: redis-insight
-    spec:
-      containers:
-      - name: redis-insight
-        image: redis/redisinsight:latest
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: redis-insight
+#   namespace: growdeck
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: redis-insight
+#   template:
+#     metadata:
+#       labels:
+#         app: redis-insight
+#     spec:
+#       containers:
+#       - name: redis-insight
+#         image: redis/redisinsight:latest
 
-        ports:
-        - containerPort: 5540
+#         ports:
+#         - containerPort: 5540
 
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "100m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
+#         resources:
+#           requests:
+#             memory: "256Mi"
+#             cpu: "100m"
+#           limits:
+#             memory: "512Mi"
+#             cpu: "500m"
 
-        volumeMounts:
-        - name: redisinsight-data
-          mountPath: /data
+#         volumeMounts:
+#         - name: redisinsight-data
+#           mountPath: /data
 
-      volumes:
-      - name: redisinsight-data
-        emptyDir: {}
+#       volumes:
+#       - name: redisinsight-data
+#         emptyDir: {}
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: redis-insight-service
-  namespace: growdeck
-spec:
-  selector:
-    app: redis-insight
-  ports:
-    - port: 5540
-      targetPort: 5540
-  type: ClusterIP
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: redis-insight-service
+#   namespace: growdeck
+# spec:
+#   selector:
+#     app: redis-insight
+#   ports:
+#     - port: 5540
+#       targetPort: 5540
+#   type: ClusterIP
