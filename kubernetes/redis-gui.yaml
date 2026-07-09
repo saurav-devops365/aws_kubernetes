@@ -20,19 +20,6 @@ spec:
         ports:
         - containerPort: 5540
 
-        env:
-        - name: RI_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: app-secret
-              key: RI_USERNAME
-
-        - name: RI_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: app-secret
-              key: RI_PASSWORD
-
         resources:
           requests:
             memory: "256Mi"
@@ -47,10 +34,9 @@ spec:
 
       volumes:
       - name: redisinsight-data
-        emptyDir: {} 
-  
+        emptyDir: {}
 
---- 
+---
 apiVersion: v1
 kind: Service
 metadata:
