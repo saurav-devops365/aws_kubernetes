@@ -9,7 +9,7 @@
 #       restartPolicy: Never
 #       containers:
 #         - name: migration
-#           image: affiefly/offerwall-backend-prod:v0.93
+#           image: affiefly/offerwall-backend-prod:v0.94
 #           command: ["npm"]
 #           args: ["run", "migrate"]
 
