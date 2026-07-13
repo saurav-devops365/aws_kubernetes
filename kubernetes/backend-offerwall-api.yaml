@@ -31,6 +31,8 @@ spec:
               value: "redis-service"
             - name: REDIS_PORT
               value: "6379"
+            - name: OTEL_SERVICE_NAME
+              value: backend-offerwall-service
 
           ports:
             - containerPort: 5000
