@@ -32,13 +32,23 @@ spec:
             - name: REDIS_PORT
               value: "6379"
             - name: OTEL_SERVICE_NAME
-              value: backend-service
+              value: "backend-service"
+            - name: OTEL_TRACES_EXPORTER
+              value: "otlp"
+            - name: OTEL_LOGS_EXPORTER
+              value: "otlp"
+            - name: OTEL_METRICS_EXPORTER
+              value: "otlp"
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: "http/protobuf"
             - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
               value: "http://otel-collector.monitoring.svc.cluster.local:4318/v1/traces"
             - name: OTEL_EXPORTER_OTLP_METRICS_ENDPOINT
               value: "http://cluster.local"
             - name: OTEL_EXPORTER_OTLP_LOGS_ENDPOINT
-              value: "http://cluster.local"  
+              value: "http://cluster.local"
+              
+            
 
           ports:
             - containerPort: 5000
