@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: affiefly/offerwall-backend-prod:v0.101
+          image: affiefly/offerwall-backend-prod:v0.102
           imagePullPolicy: Always
           command: ["node"]
           args: ["--import", "./instrumentation.mjs", "app.js"]
