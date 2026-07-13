@@ -21,7 +21,7 @@ spec:
           image: affiefly/offerwall-backend-prod:v0.101
           imagePullPolicy: Always
           command: ["node"]
-          args: ["offerwall.server.js"]
+          args: ["--import", "./instrumentation.mjs", "offerwall.server.js"] 
           envFrom:
             - secretRef:
                 name: backend-offerwall-secret
