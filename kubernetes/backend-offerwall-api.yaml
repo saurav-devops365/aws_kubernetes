@@ -33,7 +33,13 @@ spec:
               value: "6379"
             - name: OTEL_SERVICE_NAME
               value: backend-offerwall-service
-
+            - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+              value: "http://otel-collector.monitoring.svc.cluster.local:4318/v1/traces"
+            - name: OTEL_EXPORTER_OTLP_METRICS_ENDPOINT
+              value: "http://cluster.local"
+            - name: OTEL_EXPORTER_OTLP_LOGS_ENDPOINT
+              value: "http://cluster.local"  
+          
           ports:
             - containerPort: 5000
 
