@@ -24,9 +24,31 @@ spec:
               name: backend-analytics-secret
         env:
             - name: REDIS_HOST
-              value: "redis-service"
+              value: redis-service
+
             - name: REDIS_PORT
-              value: "6379"      
+              value: "6379"
+
+            - name: OTEL_SERVICE_NAME
+              value: backend-service
+
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://otel-opentelemetry-collector.monitoring.svc.cluster.local:4318
+
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: http/protobuf
+
+            - name: OTEL_TRACES_EXPORTER
+              value: otlp
+
+            - name: OTEL_METRICS_EXPORTER
+              value: otlp
+
+            - name: OTEL_LOGS_EXPORTER
+              value: otlp
+
+            - name: NODE_ENV
+              value: production      
         ports:
         - containerPort: 5000
         resources:
