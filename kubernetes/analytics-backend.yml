@@ -30,7 +30,7 @@ spec:
               value: "6379"
 
             - name: OTEL_SERVICE_NAME
-              value: backend-service
+              value: analytics-backend-service
 
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://otel-opentelemetry-collector.monitoring.svc.cluster.local:4318
