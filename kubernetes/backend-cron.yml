@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: backend-corn
-          image: affiefly/offerwall-backend-prod:v0.112
+          image: affiefly/offerwall-backend-prod:v0.113
           imagePullPolicy: Always
           command: ["node"]
           args: ["nodeCron.js"]
@@ -55,7 +55,7 @@ spec:
 #         spec:
 #           containers:
 #           - name: backend-cron
-#             image: affiefly/offerwall-backend-prod:v0.112
+#             image: affiefly/offerwall-backend-prod:v0.113
 #             command: ["node"]
 #             args: ["nodeCron.js"]
 #           restartPolicy: OnFailure
