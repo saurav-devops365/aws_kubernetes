@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: playweb-frontend
-        image: affiefly/playweb-frontend-prod:v0.7
+        image: affiefly/playweb-frontend-prod:v0.8
         ports:
         - containerPort: 3000
         resources:
