@@ -116,7 +116,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: backend-deployment  # ✅ Fixed: matches Deployment metadata.name
-  minReplicas: 5
+  minReplicas: 15
   maxReplicas: 30
   metrics:
     - type: Resource
