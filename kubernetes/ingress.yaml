@@ -149,6 +149,6 @@ spec:
               service:
                 name: phpmyadmin-service
                 port:
-                  number: 8080             
+                  number: 80           
 
     
