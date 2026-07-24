@@ -139,5 +139,16 @@ spec:
               service:
                 name: redis-insight-service
                 port:
-                  number: 5540              
+                  number: 5540
+    - host: phpmyadmin.growdeck.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: phpmyadmin-service
+                port:
+                  number: 80              
 
+    
