@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: backend-worker
-          image: affiefly/offerwall-backend-prod:v0.208
+          image: affiefly/offerwall-backend-prod:v0.209
           imagePullPolicy: Always
           command: ["node"]
           args: ["bullMQ.js"]
