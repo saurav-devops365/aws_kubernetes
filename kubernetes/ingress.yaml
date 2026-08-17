@@ -68,13 +68,13 @@ spec:
     #             port:
     #               number: 3000
 
-    #       - path: /campaigns/scalex
-    #         pathType: Prefix
-    #         backend:
-    #           service:
-    #             name: scalex-frontend-service
-    #             port:
-    #               number: 3000
+          - path: /campaigns/scalex
+            pathType: Prefix
+            backend:
+              service:
+                name: scalex-frontend-service
+                port:
+                  number: 3000
 
     - host:  scalex.growdeck.io
       http:
