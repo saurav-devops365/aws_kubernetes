@@ -22,7 +22,7 @@ spec:
         - containerPort: 3000
         envFrom:
           - secretRef:
-              name: backend-offerwall-secret
+              name: frontend-secret
         resources:
           requests:
             cpu: "100m" # Minimum guaranteed CPU
