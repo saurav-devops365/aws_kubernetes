@@ -20,6 +20,9 @@ spec:
         image: affiefly/growdeck-landing-frontend-prod:v0.20
         ports:
         - containerPort: 3000
+        envFrom:
+          - secretRef:
+              name: backend-offerwall-secret
         resources:
           requests:
             cpu: "100m" # Minimum guaranteed CPU
