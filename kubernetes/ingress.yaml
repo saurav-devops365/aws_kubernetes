@@ -57,24 +57,24 @@ spec:
                 name: geo-core-api-backend-service
                 port:
                   number: 5000              
-    # - host: growdeck.io
-    #   http:
-    #     paths:
-    #       - path: /
-    #         pathType: Prefix
-    #         backend:
-    #           service:
-    #             name: growdeck-frontend-service
-    #             port:
-    #               number: 3000
+    - host: growdeck.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: growdeck-frontend-service
+                port:
+                  number: 3000
 
-          # - path: /campaigns/scalex
-          #   pathType: Prefix
-          #   backend:
-          #     service:
-          #       name: scalex-frontend-service
-          #       port:
-          #         number: 3000
+          - path: /campaigns/scalex
+            pathType: Prefix
+            backend:
+              service:
+                name: scalex-frontend-service
+                port:
+                  number: 3000
 
     - host:  scalex.growdeck.io
       http:
